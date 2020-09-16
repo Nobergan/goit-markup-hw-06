@@ -506,7 +506,7 @@
 
           <div class="form">
             <p class="call-to-subscribe">Подпишитесь на рассылку</p>
-            <form action="">
+            <form class="js-speaker-form">
               <div class="form-flex">
                 <input
                   type="email"
@@ -514,7 +514,7 @@
                   id="e-mail"
                   placeholder="E-mail"
                 />
-                <button type="button" class="footer-button">
+                <button type="submit" class="footer-button">
                   <span class="subscribe">Подписаться</span>
                   <svg class="icon-item">
                     <use
@@ -549,16 +549,56 @@
         <p class="form-title form-container">
           Оставьте свои данные, мы вам перезвоним
         </p>
-        <form class="form-container">
-          <div role="group" class="form-field">
+        <form class="form-container js-speaker-form">
+          <div class="form-field">
             <label for="name" class="form-lable">Имя</label>
-            <input type="name" name="name" id="name" class="form-input" />
+            <input
+              type="name"
+              name="name"
+              id="name"
+              class="form-input"
+              autocomplete="off"
+              required
+            />
+            <svg class="form-icon">
+              <use
+                href="./images/symbol-defs-modal-2.svg#icon-person-black-18dp"
+              ></use>
+            </svg>
+          </div>
 
+          <div class="form-field">
             <label for="tel" class="form-lable">Телефон</label>
-            <input type="tel" name="tel" id="tel" class="form-input" />
+            <input
+              type="tel"
+              name="tel"
+              id="tel"
+              class="form-input"
+              autocomplete="off"
+              required
+            />
+            <svg class="form-icon">
+              <use
+                href="./images/symbol-defs-modal-2.svg#icon-phone-black-18dp"
+              ></use>
+            </svg>
+          </div>
 
+          <div class="form-field">
             <label for="email" class="form-lable">Почта</label>
-            <input type="email" name="email" id="email" class="form-input" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="form-input"
+              autocomplete="off"
+              required
+            />
+            <svg class="form-icon">
+              <use
+                href="./images/symbol-defs-modal-2.svg#icon-email-black-18dp"
+              ></use>
+            </svg>
           </div>
 
           <div class="form-container form-field">
@@ -571,25 +611,45 @@
               id="comment"
               width="448"
               height="120"
+              required
             ></textarea>
           </div>
 
           <div class="form-policy form-container">
-            <input type="checkbox" name="policy" id="policy" />
-            <label for="policy"
-              >Соглашаюсь с рассылкой и принимаю
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                name="policy"
+                class="checkbox visually-hidden"
+              />
+              <span class="checkbox-icon"></span>
+              Соглашаюсь с рассылкой и принимаю
               <a href="">Условия договора</a></label
             >
           </div>
 
           <div class="form-button">
-            <button type="button" class="button">
-          <span class="send">Отправить</span>
+            <button type="submit" class="button">
+              <span class="send">Отправить</span>
+            </button>
           </div>
         </form>
       </div>
     </div>
 
     <script src="./js/modal.js"></script>
+    <script>
+      (() => {
+        document
+          .querySelector('.js-speaker-form')
+          .addEventListener('submit', e => {
+            e.preventDefault();
+
+            new FormData(e.currentTarget).forEach((value, name) =>
+              console.log(`${name}: ${value}`),
+            );
+          });
+      })();
+    </script>
   </body>
 </html>
