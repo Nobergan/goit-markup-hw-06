@@ -934,8 +934,16 @@ body {
   fill: #2196f3;
 }
 
-.form-field .form-input:required:valid {
+/* .form-field .form-input:required:valid {
   border-color: #2196f3;
+} */
+
+.form-field .form-input:not(:placeholder-shown):valid {
+  border-color: #2196f3;
+}
+
+.form-field .form-input:not(:placeholder-shown):invalid {
+  border-color: red;
 }
 
 .form-field .form-input:required:valid + .form-icon {
@@ -983,7 +991,7 @@ textarea:focus {
   border: 1px solid #2196f3;
 }
 
-textarea:required:valid {
+textarea:not(:placeholder-shown) {
   border: 1px solid #2196f3;
 }
 
